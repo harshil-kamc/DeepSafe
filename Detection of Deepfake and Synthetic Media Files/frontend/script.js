@@ -71,7 +71,7 @@ fileInput.onchange = async () => {
 
     try {
 
-        const response = await fetch("http://localhost:5000/analyze", {
+        const response = await fetch("https://deepsafe-ob6p.onrender.com/", {
             method: "POST",
             body: formData
         });
