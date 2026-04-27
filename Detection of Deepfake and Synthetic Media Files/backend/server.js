@@ -8,11 +8,17 @@ import util from "util";
 import { RealityDefender } from "@realitydefender/realitydefender";
 
 dotenv.config();
-const execPromise = util.promisify(exec);
 
+const execPromise = util.promisify(exec);
 const app = express();
+
 app.use(cors());
 app.use(express.json());
+
+// ✅ Ensure uploads folder exists
+if (!fs.existsSync("uploads")) {
+  fs.mkdirSync("uploads");
+}
 
 console.log("API KEY Loaded:", process.env.API_KEY ? "YES ✅" : "NO ❌");
 
@@ -39,36 +45,39 @@ const realityDefender = new RealityDefender({
 ========================= */
 function getFinalProbability(result) {
   if (!result) return 0;
-
-  // Reality Defender gives final confidence here
   if (typeof result.score === "number") {
     return result.score;
   }
-
   return 0;
 }
+
+/* =========================
+   ROOT ROUTE (FIXED)
+========================= */
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
 
 /* =========================
    ANALYZE ROUTE
 ========================= */
 app.post("/analyze", upload.single("media"), async (req, res) => {
-  if (!req.file)
+  if (!req.file) {
     return res.status(400).json({
       success: false,
       error: "No file uploaded"
     });
+  }
 
   const filePath = req.file.path;
   const mimeType = req.file.mimetype;
 
   try {
-
     /* ================= IMAGE + AUDIO ================= */
     if (
       mimeType.startsWith("image") ||
       mimeType.startsWith("audio")
     ) {
-
       const result = await realityDefender.detect({ filePath });
 
       console.log("RAW API RESPONSE:", result);
@@ -87,56 +96,19 @@ app.post("/analyze", upload.single("media"), async (req, res) => {
       });
     }
 
-    /* ================= VIDEO ================= */
+    /* ================= VIDEO (DISABLED FOR RENDER) ================= */
     if (mimeType.startsWith("video")) {
-
-      const frameFolder = "uploads/frames";
-
-      if (!fs.existsSync(frameFolder)) {
-        fs.mkdirSync(frameFolder, { recursive: true });
-      }
-
-      // Clean old frames
-      fs.readdirSync(frameFolder).forEach(file =>
-        fs.unlinkSync(`${frameFolder}/${file}`)
-      );
-
-      // Extract 5 frames
-      const command = `ffmpeg -i "${filePath}" -vf fps=1 -vframes 5 ${frameFolder}/frame-%02d.jpg`;
-      await execPromise(command);
-
-      const frameFiles = fs
-        .readdirSync(frameFolder)
-        .filter(f => f.endsWith(".jpg"));
-
-      let scores = [];
-
-      for (const frame of frameFiles) {
-        const result = await realityDefender.detect({
-          filePath: `${frameFolder}/${frame}`
-        });
-
-        console.log("FRAME RESPONSE:", result);
-
-        scores.push(getFinalProbability(result) * 100);
-
-        fs.unlinkSync(`${frameFolder}/${frame}`);
-      }
-
       fs.unlinkSync(filePath);
 
-      const average =
-        scores.reduce((a, b) => a + b, 0) / scores.length;
-
-      return res.json({
-        success: true,
-        mediaType: "Video",
-        averageAIProbability: average.toFixed(2)
+      return res.status(400).json({
+        success: false,
+        error: "Video not supported on free hosting (ffmpeg not available)"
       });
     }
 
     /* ================= UNSUPPORTED ================= */
     fs.unlinkSync(filePath);
+
     return res.status(400).json({
       success: false,
       error: "Unsupported file type"
@@ -157,8 +129,10 @@ app.post("/analyze", upload.single("media"), async (req, res) => {
 });
 
 /* =========================
-   START SERVER
+   START SERVER (FIXED)
 ========================= */
-app.listen(5000, () => {
-  console.log("Server running on http://localhost:5000");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
