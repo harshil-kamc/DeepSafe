@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepSafe Forensic AI</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+  
+  background-image: url('https://i.postimg.cc/jdvV2rvV/images.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  
+}
+
+.anchor{
+margin-top: 40px;
+text-decoration: none; 
+font-family: 'Space Grotesk';
+  font-weight: 800;
+ color: var(--accent); 
+    letter-spacing: 2px;
+ font-size: 11px;
+ transition: 0.5s;
+ text-align: center;
+}
+
+    </style>
+</head>
+<body>
+
+<!-- PORTAL INTRO -->
+<div id="introPortal" class="portal-overlay">
+    <div class="portal-content-wrapper">
+        <h1 class="portal-logo">DeepSafe<span>.</span></h1>
+        <div class="zoom-circle"></div>
+    </div>
+</div>
+
+<!-- INTRO SECTION -->
+<section class="screen">
+    <header>
+        <h1>DeepSafe<span>.</span></h1><br>
+        <h3>Verification Layer for Synthetic Media</h3><br>
+    </header>
+    
+
+    <div class="about-summary">
+        <p>
+            Advanced forensic analysis meets neural detection.
+            DeepSafe identifies AI-generated artifacts and synthetic inconsistencies.
+        </p>
+        <a href="know more.html" class="anchor"><h2>know more</h2></a>
+    </div>
+<br><br>
+    <a href="#main" class="anchor"><h2><b>SCROLL TO ANALYZE ↓</b></h2></a>
+</section>
+
+<!-- APP SECTION -->
+<section class="screen section-app">
+    <main class="app-card">
+
+        <header>
+            <h1 id="main">DeepSafe<span>.</span></h1>
+            <div class="status-pill"><b>● SYSTEM ACTIVE</b></div>
+            <p>Verification Layer for Synthetic Media</p>
+        </header>
+
+        <!-- UPLOAD -->
+        <div class="upload-container" id="dropZone">
+            <div class="upload-box">
+                <div class="scanner-line"></div>
+                <p>Select or Drop file to scan</p>
+                <small>Supporting MP4, MP3, JPG, PNG</small>
+            </div>
+            <input type="file" id="fileInput" hidden>
+        </div>
+
+        <!-- RESULT -->
+        <section id="resultArea" style="display:none;">
+            <div class="risk-meter-container">
+                <div class="meter-labels">
+                    <span>AI PROBABILITY</span>
+                    <span id="scoreText">0%</span>
+                </div>
+                <div class="meter-track">
+                    <div id="meterFill"></div>
+                </div>
+            </div>
+
+            <div class="forensic-details">
+                <div class="detail">
+                    <span>SOURCE</span>
+                    <b id="metaSource">PENDING</b>
+                </div>
+                <div class="detail">
+                    <span>STATUS</span>
+                    <b id="aiSig">SYSTEM READY</b>
+                </div>
+            </div>
+
+            <button id="testAnother" class="action-btn">
+                TEST ANOTHER FILE
+            </button>
+        </section>
+<br><br><br>
+        <footer>
+            <p>Powered by &nbsp;<a href="teaminfo.html" class="anchor" style="font-size:20px"><strong>Digital Piece</b></strong></a></p>
+            <br><small>Deepfake Risk Detection System v5.0</small>
+        </footer>
+
+    </main>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
