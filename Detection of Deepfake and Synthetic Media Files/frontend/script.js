@@ -71,10 +71,10 @@ fileInput.onchange = async () => {
 
     try {
 
-        const response = await fetch("https://deepsafe-ob6p.onrender.com/", {
-            method: "POST",
-            body: formData
-        });
+       const response = await fetch("https://deepsafe-ob6p.onrender.com/analyze", {
+    method: "POST",
+    body: formData
+});
 
         if (!response.ok) {
             throw new Error("Server not responding");
