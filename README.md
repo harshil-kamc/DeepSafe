@@ -33,3 +33,26 @@ The backend handles the "heavy lifting" forensic math. You must install the envi
 3. Run the installation command (Requires [Node.js](https://nodejs.org/)):
    ```bash
    npm install
+   
+### **Step 3: Start the Forensic Node**
+Launch the engine so the dashboard can communicate with it
+`npm start`
+Keep this window open!
+The engine is now active and listening for forensic requests.
+
+### **Step 4: Launch the Dashboard**
+1.Go to the frontend folder in your file explorer.
+2.Double-click index.html to open it in your browser.
+3.You are now ready to verify media with full local power.
+
+### **💡 Why Run Locally?**
+### **Feature                Web Demo                  Local Engine**
+File Privacy       Uploaded to Server          Stays on your PC
+Video Support      Disabled / Limited          Fully Functional
+Processing Speed     Throttled                    Max CPU Power
+Forensic Detail        Basic                     Deep Interrogation
+
+### **📜 Repository Structure**
+backend/ – Node.js forensic engine and API logic.
+frontend/ – The User Dashboard (HTML/CSS/JS).
+docs/ – Project research, drafts, and technical presentations.
