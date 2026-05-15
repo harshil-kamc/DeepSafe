@@ -1,4 +1,5 @@
-#🛡️ DeepSafe: Forensic-Grade Synthetic Media Detection
+#DeepSafe
+ Forensic-Grade Synthetic Media Detection
 
 "Physics-Based Evidence in an AI-Driven World"
 
