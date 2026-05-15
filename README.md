@@ -36,16 +36,16 @@ The backend handles the "heavy lifting" forensic math. You must install the envi
 
    
 ### **Step 3: Start the Forensic Node**
-Launch the engine so the dashboard can communicate with it
+Launch the engine so the dashboard can communicate with it:
 `npm start`
-Keep this window open!
-The engine is now active and listening for forensic requests.
+Keep this window open!:
+The engine is now active and listening for forensic requests.:
 
 
 ### **Step 4: Launch the Dashboard**
-1.Go to the frontend folder in your file explorer.
-2.Double-click index.html to open it in your browser.
-3.You are now ready to verify media with full local power.
+1.Go to the frontend folder in your file explorer.:
+2.Double-click index.html to open it in your browser.:
+3.You are now ready to verify media with full local power.:
 
 
 ## 💡 Why Run Locally?
@@ -60,6 +60,6 @@ The engine is now active and listening for forensic requests.
 ---
 
 ### **📜 Repository Structure**
-backend/ – Node.js forensic engine and API logic.
-frontend/ – The User Dashboard (HTML/CSS/JS).
-docs/ – Project research, drafts, and technical presentations.
+backend/ – Node.js forensic engine and API logic.:
+frontend/ – The User Dashboard (HTML/CSS/JS).:
+docs & demo/ – Project research, drafts, and technical presentations.:
