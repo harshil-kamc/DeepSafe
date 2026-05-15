@@ -1,7 +1,7 @@
-#DeepSafe
+DeepSafe
  Forensic-Grade Synthetic Media Detection
 
-"Physics-Based Evidence in an AI-Driven World"
+"Physics-Based Evidence in an AI-Driven World" 
 
 DeepSafe is an advanced digital forensics platform that shifts the paradigm of deepfake detection. Instead of relying on fallible AI-vs-AI "guessing" games, DeepSafe interrogates the structural integrity of digital files. By analyzing sensor noise floors, metadata inconsistencies, and signal entropy, DeepSafe identifies the mathematical signatures that artificial intelligence physically cannot hide.
 
