@@ -46,7 +46,7 @@ The engine is now active and listening for forensic requests.
 1.Go to the frontend folder in your file explorer.
 2.Double-click index.html to open it in your browser.
 3.You are now ready to verify media with full local power.
----
+
 
 ## 💡 Why Run Locally?
 
