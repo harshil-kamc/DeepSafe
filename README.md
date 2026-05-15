@@ -27,12 +27,12 @@ Follow these steps to deploy the DeepSafe engine on any system. No Git knowledge
 
 ### **Step 2: Initialize the Forensic Backend**
 The backend handles the "heavy lifting" forensic math. You must install the environment first:
-1. Open your **Terminal** (Command Prompt or PowerShell on Windows).
-2. Navigate to the backend folder:
-   `cd "Path/To/Your/Extracted/DeepSafe-Folder/backend"`
-3. Run the installation command (Requires [Node.js](https://nodejs.org/)):
-   ```bash
-   npm install
+1. **Install FFmpeg:** DeepSafe requires FFmpeg for video processing. 
+   - **Windows:** Download from [gyan.dev](https://www.gyan.dev/ffmpeg/builds/) and add to your System PATH.
+   - **Mac:** `brew install ffmpeg`
+   - **Linux:** `sudo apt install ffmpeg`
+2. Open your Terminal and navigate to the backend folder.
+3. Run `npm install`.
 
    
 ### **Step 3: Start the Forensic Node**
