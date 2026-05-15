@@ -46,11 +46,11 @@ The engine is now active and listening for forensic requests.
 3.You are now ready to verify media with full local power.
 
 ### **💡 Why Run Locally?**
-### **Feature                Web Demo                  Local Engine**
-File Privacy       Uploaded to Server          Stays on your PC
-Video Support      Disabled / Limited          Fully Functional
-Processing Speed     Throttled                    Max CPU Power
-Forensic Detail        Basic                     Deep Interrogation
+Feature,Web Demo,Local Engine
+File Privacy,Uploaded to Server,Stays on your PC
+Video Support,Disabled / Limited,Fully Functional
+Processing Speed,Throttled,Max CPU Power
+Forensic Detail,Basic,Deep Interrogation
 
 ### **📜 Repository Structure**
 backend/ – Node.js forensic engine and API logic.
