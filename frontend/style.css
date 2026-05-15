@@ -1,0 +1,335 @@
+:root {
+    --bg: #010409;
+    --accent: #00f3ff;
+    --text-main: #ffffff;
+    --text-dim: #94a3b8; 
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Base & Reset --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+    background: var(--bg); 
+    color: var(--text-main); 
+    font-family: 'Inter', sans-serif; 
+    overflow-x: hidden; 
+    scroll-behavior: smooth; 
+}
+
+/* --- Logo Startup Animation --- */
+/* --- THE "DOT" ORIGIN ANIMATION --- */
+/* --- THE "DOT" ORIGIN ANIMATION --- */
+.portal-overlay { 
+    position: fixed; 
+    inset: 0; 
+    background: #000; 
+    z-index: 9999; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.portal-content-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.portal-logo { 
+    font-family: 'Space Grotesk'; 
+    font-size: 3.5rem; 
+    letter-spacing: 12px; 
+    font-weight: 800; 
+    color: #fff; 
+    position: relative;
+    z-index: 10;
+    /* This makes the text fade into thin air */
+    animation: logoFadeOut 2.8s ease-in-out forwards;
+}
+
+.portal-logo span { 
+    color: var(--accent); /* The Cyan Dot */
+}
+
+/* THE HOLLOW NEON CIRCLE */
+.zoom-circle { 
+    position: absolute;
+    /* Aligned precisely with the dot after "DeepSafe" */
+    right: -15px; 
+    width: 20px; 
+    height: 20px; 
+    background: transparent; /* No fill color */
+    border: 2px solid var(--accent); /* Only border color */
+    border-radius: 50%; 
+    box-shadow: 0 0 30px var(--accent), inset 0 0 10px var(--accent); 
+    z-index: 5;
+    transform: scale(0);
+    /* Faster expansion for a smoother 'burst' feel */
+    animation: portalBurstFromDot 2.8s cubic-bezier(0.15, 0, 0.15, 1) forwards; 
+}
+
+@keyframes portalBurstFromDot {
+    0% { transform: scale(0); opacity: 0; border-width: 8px; }
+    10% { opacity: 1; }
+    40% { border-width: 2px; }
+    100% { transform: scale(150); opacity: 0; border-width: 1px; }
+}
+
+@keyframes logoFadeOut {
+    0% { opacity: 0; transform: scale(0.95); }
+    20% { opacity: 1; transform: scale(1); }
+    70% { opacity: 1; filter: blur(0px); }
+    100% { opacity: 0; transform: scale(1.05); filter: blur(20px); }
+}
+
+/* --- Sectioning & Typography --- */
+.screen { 
+    min-height: 100vh; width: 100%; display: flex; 
+    flex-direction: column; align-items: center; 
+    justify-content: center; padding: 40px; text-align: center; 
+}
+
+h1 { font-family: 'Space Grotesk'; font-size: 3.2rem; letter-spacing: -1px; margin-bottom: 5px; }
+h1 span { color: var(--accent); }
+
+.section-intro p, .app-card header p {
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.about-summary p {
+    color: var(--text-dim);
+    font-size: 0.5 rem;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* FIX: System Active Pill Width & Centering */
+.status-pill { 
+    font-size: 10px; 
+    color: green; 
+    letter-spacing: 2px; 
+    font-weight: 800; 
+    border: 1px solid var(--accent); 
+    padding: 4px 12px; 
+    border-radius: 50px; 
+    margin: 0 auto 10px auto; 
+    display: table; /* Hugs content width */
+    width: auto;
+}
+
+/* --- Upload Box & Neon Hover --- */
+.upload-container {
+    padding: 30px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.upload-box { 
+    width: 100%;
+    min-height: 280px; /* Constant size fix */
+    max-width: 600px;
+    padding: 40px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-radius: 24px; 
+    position: relative; 
+    overflow: hidden; 
+    background: rgba(255, 255, 255, 0.01);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.upload-box:hover {
+    border-color: var(--accent);
+    /* Fade glow border effect */
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.25), inset 0 0 15px rgba(0, 243, 255, 0.05);
+    transform: translateY(-3px);
+}
+
+.scanner-line { 
+    position: absolute; top: 0; left: 0; width: 100%; height: 2px; 
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    box-shadow: 0 0 15px var(--accent);
+    z-index: 5;
+    animation: scan 3s infinite linear; 
+}
+@keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+
+/* --- App Card & Results --- */
+.app-card { 
+    width: 100%; max-width: 850px; 
+    background: rgba(13, 17, 23, 0.85); 
+    padding: 50px; border-radius: 32px; 
+    border: 1px solid var(--border); 
+}
+
+.risk-meter-container { margin: 40px 0; text-align: left; }
+.meter-labels { display: flex; justify-content: space-between; font-weight: 700; font-size: 12px; margin-bottom: 10px; }
+.meter-track { height: 10px; background: #0f172a; border-radius: 10px; overflow: hidden; }
+#meterFill { height: 100%; width: 0; transition: 1.5s cubic-bezier(0.1, 0, 0.1, 1); }
+
+.forensic-details { 
+    display: flex; justify-content: space-around; 
+    margin-top: 30px; background: #000; padding: 20px; 
+    border-radius: 12px; border: 1px solid var(--border); 
+}
+.detail span { display: block; font-size: 10px; color: #475569; margin-bottom: 4px; }
+
+/* New: Instructions Box */
+.safety-instructions {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.4);
+    border-left: 4px solid var(--accent);
+    display: none;
+}
+
+.action-btn { 
+    margin-top: 30px; background: transparent; 
+    border: 1px solid var(--accent); color: var(--accent); 
+    padding: 12px 25px; border-radius: 8px; 
+    cursor: pointer; font-weight: 700; transition: 0.3s;
+}
+.action-btn:hover { background: var(--accent); color: #000; }
+
+footer strong { color: var(--text-main); cursor: pointer; transition: 0.3s; }
+footer strong:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+
+.team-modal { 
+    position: fixed; inset: 0; background: rgba(0,0,0,0.95); 
+    z-index: 10000; display: none; justify-content: center; 
+    align-items: center; backdrop-filter: blur(10px); 
+}
+.team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 25px; }
+.member { border: 1px solid var(--border); padding: 20px; border-radius: 12px; font-weight: 700; }
+.close-btn { position: absolute; top: 40px; right: 40px; background: none; border: none; color: #fff; font-size: 40px; cursor: pointer; }
+
+.scroll-prompt { 
+    margin-top: 40px; font-weight: 800; color: var(--accent); 
+    letter-spacing: 2px; font-size: 11px; transition: 0.5s; 
+}
+.live-status {
+    margin-top: 20px;
+    font-size: 11px;
+    text-align: left;
+    opacity: 0.6;
+    color: #94a3b8;
+    min-height: 80px;
+    font-family: monospace;
+    line-height: 1.6;
+    white-space: pre-line;
+    transition: opacity 0.3s ease;
+    .live-status {
+    margin-top: 20px;
+    font-size: 12px;
+    text-align: left;
+    min-height: 100px;
+    font-family: monospace;
+    line-height: 1.8;
+}
+
+.status-line {
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+}
+
+.status-line.active {
+    opacity: 1;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.blink::after {
+    content: "...";
+    animation: blinkDots 1s infinite;
+}
+
+@keyframes blinkDots {
+    0% { content: "."; }
+    33% { content: ".."; }
+    66% { content: "..."; }
+}
+}
+.live-status {
+    margin-top: 20px;
+    font-size: 12px;
+    text-align: left;
+    min-height: 100px;
+    font-family: monospace;
+    line-height: 1.8;
+}
+
+.status-line {
+    opacity: 0.35;
+    transition: all 0.3s ease;
+}
+
+.status-line.active {
+    opacity: 1;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.loading-dots::after {
+    content: "";
+    animation: dots 1.2s steps(3, end) infinite;
+}
+
+@keyframes dots {
+    0% { content: ""; }
+    33% { content: "."; }
+    66% { content: ".."; }
+    100% { content: "..."; }
+}
+.live-status {
+    margin-top: 20px;
+    font-size: 12px;
+    text-align: left;
+    min-height: 100px;
+    font-family: monospace;
+    line-height: 1.8;
+}
+
+.status-line {
+    opacity: 0.35;
+    transition: all 0.3s ease;
+}
+
+.status-line.active {
+    opacity: 1;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.loading-dots::after {
+    content: "";
+    animation: dots 1.2s steps(3,end) infinite;
+}
+
+@keyframes dots {
+    0% { content: ""; }
+    33% { content: "."; }
+    66% { content: ".."; }
+    100% { content: "..."; }
+}
+#meterFill {
+    height: 100%;
+    width: 0;
+    transition: 1.5s cubic-bezier(0.1, 0, 0.1, 1);
+}
