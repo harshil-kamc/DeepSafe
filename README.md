@@ -2,7 +2,9 @@
 Forensic-Grade Synthetic Media Detection
 
 🛡️ DeepSafe: Forensic-Grade Synthetic Media Detection
+
 "Physics-Based Evidence in an AI-Driven World"
+
 DeepSafe is an advanced digital forensics platform that shifts the paradigm of deepfake detection. Instead of relying on fallible AI-vs-AI "guessing" games, DeepSafe interrogates the structural integrity of digital files. By analyzing sensor noise floors, metadata inconsistencies, and signal entropy, DeepSafe identifies the mathematical signatures that artificial intelligence physically cannot hide.
 
 🚀 Key Features (Local Suite)
@@ -51,6 +53,7 @@ Double-click index.html.
 DeepSafe is now live. You can now drag and drop files for full-depth local analysis.
 
 💡 Why Run Locally?
+
 While the hosted version is a great preview, the Localhost version is where the real power lives:
 
 No File Size Limits: Process large 4K videos without server timeouts.
